@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .note {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        .note textarea {
+            width: 100%;
+            height: 100px;
+            border: none;
+            background-color: transparent;
+            font-size: 16px;
+        }
+        .note button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .note button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Notes App</h1>
+        
+        <div class="note">
+            <textarea placeholder="Write your note here..."></textarea>
+            <button onclick="saveNote()">Save Note</button>
+        </div>
+        
+        <div id="notes">
+            <!-- Notes will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        function saveNote() {
+            var noteText = document.querySelector('.note textarea').value.trim();
+            if (noteText !== '') {
+                var noteElement = document.createElement('div');
+                noteElement.classList.add('note');
+                noteElement.innerHTML = '<p>' + noteText + '</p>';
+                document.getElementById('notes').appendChild(noteElement);
+                document.querySelector('.note textarea').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
